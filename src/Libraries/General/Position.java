@@ -15,21 +15,29 @@ public class Position {
     }
 
     public Position add(String dir, Grid grid) {
+        return add(dir, grid, 1);
+    }
+
+    public Position add(String dir, Grid grid, int amp) {
         int x1 = x;
         int y1 = y;
         if (dir.equals(Directions.NORTH)) {
-            y1 -= grid.getRectSize().getHeight() + grid.getGapSize();
+            y1 -= (grid.getRectSize().getHeight() + grid.getGapSize()) * amp;
         }
         if (dir.equals(Directions.SOUTH)) {
-            y1 += grid.getRectSize().getHeight() + grid.getGapSize();
+            y1 += (grid.getRectSize().getHeight() + grid.getGapSize()) * amp;
         }
         if (dir.equals(Directions.EAST)) {
-            x1 += grid.getRectSize().getWidth() + grid.getGapSize();
+            x1 += (grid.getRectSize().getWidth() + grid.getGapSize()) * amp;
         }
         if (dir.equals(Directions.WEST)) {
-            x1 -= grid.getRectSize().getWidth() + grid.getGapSize();
+            x1 -= (grid.getRectSize().getWidth() + grid.getGapSize()) * amp;
         }
         return new Position(x1, y1);
+    }
+
+    public boolean intsEqual(Position pos) {
+        return x == pos.getX() && y == pos.getY();
     }
 
     public int getX() {

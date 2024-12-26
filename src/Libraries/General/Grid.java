@@ -50,6 +50,17 @@ public class Grid {
         }
     }
 
+    public ArrayList<Position> getPoss() {
+        ArrayList<Position> poss = new ArrayList<>();
+
+        for (int x : getXs()) {
+            for (int y : getYs()) {
+                poss.add(new Position(x, y));
+            }
+        }
+        return poss;
+    }
+
     public Size getDimensions() {
         return dimensions;
     }
